@@ -1,7 +1,5 @@
 package Components;
 
-import java.util.Random;
-
 import Enums.ComponentEnum;
 import Globals.Global;
 

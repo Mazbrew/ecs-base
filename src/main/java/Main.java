@@ -1,5 +1,3 @@
-import javax.swing.text.html.parser.Entity;
-
 import static com.raylib.Jaylib.BLACK;
 import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
