@@ -1,28 +1,60 @@
+import static com.raylib.Jaylib.BLACK;
 import static com.raylib.Jaylib.RAYWHITE;
-import static com.raylib.Jaylib.VIOLET;
 import static com.raylib.Raylib.*;
 
-public class Main {
-    public static void main(String args[]) {
-        InitWindow(800, 450, "Demo");
-        SetTargetFPS(60);
-        Camera3D camera = new Camera3D()
-                ._position(new Vector3().x(18).y(16).z(18))
-                .target(new Vector3())
-                .up(new Vector3().x(0).y(1).z(0))
-                .fovy(45).projection(CAMERA_PERSPECTIVE);
+import Components.ComponentManager;
+import Entities.EntityManager;
+import Enums.EntityType;
+import Globals.Global;
+import Systems.SystemManager;
 
-        while (!WindowShouldClose()) {
-            UpdateCamera(camera, CAMERA_ORBITAL);
+public class Main {
+
+    public static void main(String args[]) {
+        InitWindowProperties();
+
+    }
+
+    private static void InitWindowProperties(){
+        InitWindow(Global.SCREEN_WIDTH, Global.SCREEN_HEIGHT, Global.TITLE);
+        SetTargetFPS(Global.FPS);
+
+        for(int i = 0; i < 500; i ++){
+            EntityManager.createEntity(EntityType.CIRCLE);
+        }
+
+        ComponentManager.attachComponents();
+
+        Long startTime = System.nanoTime();
+        Long currentTime;
+        double deltaTime;
+        int frames = 0;
+        int fps = 0;
+
+        while(!WindowShouldClose()){
             BeginDrawing();
+
+            frames++;
+
+            currentTime = System.nanoTime();
+
+            deltaTime = (currentTime - startTime) / 1_000_000_000.0;
+
+            if(deltaTime >= 1.0){
+                fps = frames;
+                frames = 0;
+                startTime = currentTime;
+            }
+
             ClearBackground(RAYWHITE);
-            BeginMode3D(camera);
-            DrawGrid(20, 1.0f);
-            EndMode3D();
-            DrawText("Hello world", 190, 200, 20, VIOLET);
-            DrawFPS(20, 20);
+
+            SystemManager.manage();
+
+            DrawText(String.valueOf(fps), 0, 0, FONT_SDF, BLACK);
+
             EndDrawing();
         }
+
         CloseWindow();
     }
 }
