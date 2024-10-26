@@ -6,19 +6,20 @@ import Utils.IdUtil;
 
 public final class SystemManager {
 
-    public static void manage(){
-        for(String entityId : EntityManager.getEntityIdList()){
-            EntityType entityType = IdUtil.idStringToEntityType(entityId);
+    public static void manage() {
+        if (!EntityManager.getEntityIdList().isEmpty()) {
+            for (String entityId : EntityManager.getEntityIdList()) {
+                EntityType entityType = IdUtil.idStringToEntityType(entityId);
 
-            switch(entityType){
-                case CIRCLE:
-                    try {
-                        MovementSystem.updatePosition(entityId, entityType);
-                        DrawSystem.draw(entityId, entityType);
-                    } catch(Exception e){
-                        System.out.println(e.toString());
-                    }
-                    break;
+                switch (entityType) {
+                    case CIRCLE:
+                        try {
+                            DrawSystem.draw(entityId, entityType);
+                        } catch (Exception e) {
+                            System.out.println(e.toString());
+                        }
+                        break;
+                }
             }
         }
     }

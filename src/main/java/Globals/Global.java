@@ -11,5 +11,5 @@ public final class Global {
 
     public static final int CIRCLE_SIZE = 10;
 
-    public static final float BASE_SPEED = 10.0f;
+    public static final float BASE_SPEED = 1.0f;
 }

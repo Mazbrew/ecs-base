@@ -23,12 +23,6 @@ public class MovementSystem {
             float x = positionComponent.getX() + deltaX * speedComponent.getSpeed();
             float y = positionComponent.getY() + deltaY * speedComponent.getSpeed();
 
-            if(speedComponent.getSpeed() > 0.00f){
-                speedComponent.setSpeed(speedComponent.getSpeed() - 0.01f);
-            }else {
-                speedComponent.setSpeed(0);
-            }
-
             if (x < 0) {
                 positionComponent.setX(0);
                 directionComponent.setDirection((float) Math.PI - m);
