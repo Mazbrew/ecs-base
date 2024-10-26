@@ -13,15 +13,15 @@ public class ColorComponent implements IComponent{
     private Color color;
 
     public ColorComponent(){
-        this.color = new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256), 50); 
+        this.color = new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256), rand.nextInt(256)); 
     }
 
     public ColorComponent(Color color){
         this.color = color;
     }
 
-    public ColorComponent(int r, int g, int b){
-        this.color = new Color(r,g,b, 50);
+    public ColorComponent(int r, int g, int b, int a){
+        this.color = new Color(r,g,b,a);
     }
 
     @Override

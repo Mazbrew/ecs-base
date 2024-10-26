@@ -1,8 +1,8 @@
 package Globals;
 
 public final class Global {
-    public static final int SCREEN_WIDTH = 800;
-    public static final int SCREEN_HEIGHT = 400;
+    public static int SCREEN_WIDTH = 0;
+    public static int SCREEN_HEIGHT = 0;
     public static final int FPS = 60;
     public static final String TITLE = "ECS_BASE";
 

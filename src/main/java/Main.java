@@ -16,7 +16,15 @@ public class Main {
     }
 
     private static void InitWindowProperties() {
-        InitWindow(Global.SCREEN_WIDTH, Global.SCREEN_HEIGHT, Global.TITLE);
+        InitWindow(0,0, Global.TITLE);
+
+        int display = GetCurrentMonitor();
+
+        Global.SCREEN_WIDTH = GetMonitorWidth(display);
+        Global.SCREEN_HEIGHT = GetMonitorHeight(display);
+
+        SetWindowSize(Global.SCREEN_WIDTH, Global.SCREEN_HEIGHT);
+
         SetTargetFPS(Global.FPS);
 
         Long startTime = System.nanoTime();
