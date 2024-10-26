@@ -8,7 +8,7 @@ import Enums.EntityType;
 import Globals.Global;
 import Utils.ComponentUtil;
 
-public final class DrawManager {
+public final class DrawSystem {
 
     public static void draw(String entityId, EntityType entityType){
         PositionComponent positionComponent = ComponentUtil.getPositionComponentWithId(entityId);

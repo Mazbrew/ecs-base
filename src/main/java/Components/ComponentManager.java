@@ -29,6 +29,7 @@ public final class ComponentManager {
                 componentMap.put(ComponentEnum.POSITION ,new PositionComponent());
                 componentMap.put(ComponentEnum.COLOR, new ColorComponent());
                 componentMap.put(ComponentEnum.DIRECTION, new DirectionComponent());
+                componentMap.put(ComponentEnum.SPEED, new SpeedComponent());
                 entityComponentMap.put(entityId, componentMap);
                 break;
         }
