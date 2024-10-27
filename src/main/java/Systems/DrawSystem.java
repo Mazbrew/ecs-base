@@ -23,8 +23,6 @@ public final class DrawSystem {
     private static final Vector2 circleOrigin = new Vector2(Global.CIRCLE_SIZE/2, Global.CIRCLE_SIZE);
 
     public static void draw(String entityId, EntityType entityType){
-        PositionComponent positionComponent = ComponentUtil.getPositionComponentWithId(entityId);
-
         switch(entityType){
             case CIRCLE:
                 BoundingBoxComponent boundingBoxComponent = ComponentManager.getComponentFromEntityAndCast(entityId, ComponentEnum.BOUNDING_BOX,
