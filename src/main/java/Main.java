@@ -3,7 +3,6 @@ import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
 
 import java.util.List;
-import java.util.Random;
 
 import Components.ComponentManager;
 import Components.PositionComponent;
