@@ -13,7 +13,7 @@ public final class SystemManager {
             switch (entityType) {
                 case CIRCLE:
                     try {
-                        // MovementSystem.updatePosition(entityId, entityType);
+                        MovementSystem.updatePosition(entityId, entityType);
                         DrawSystem.draw(entityId, entityType);
                     } catch (Exception e) {
                         System.out.println(e.toString());

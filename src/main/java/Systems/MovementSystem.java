@@ -1,5 +1,8 @@
 package Systems;
 
+import com.raylib.Jaylib.Rectangle;
+
+import Components.BoundingBoxComponent;
 import Components.DirectionComponent;
 import Components.PositionComponent;
 import Components.SpeedComponent;
@@ -13,6 +16,8 @@ public class MovementSystem {
         PositionComponent positionComponent = ComponentUtil.getPositionComponentWithId(entityId);
         DirectionComponent directionComponent = ComponentUtil.getDirectionComponentWithId(entityId);
         SpeedComponent speedComponent = ComponentUtil.getSpeedComponentWithId(entityId);
+
+        BoundingBoxComponent boundingBoxComponent = ComponentUtil.getBoundingBoxComponentWithId(entityId);
 
         if (positionComponent != null) {
             float m = directionComponent.getDirection();
@@ -47,6 +52,11 @@ public class MovementSystem {
                 case CIRCLE:
                     positionComponent.setX(x);
                     positionComponent.setY(y);
+                    
+                    Rectangle boundingBox = boundingBoxComponent.getBoundingBox();
+                    boundingBox.x(x);
+                    boundingBox.y(y);
+
                     break;
             }
 

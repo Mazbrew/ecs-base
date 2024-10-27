@@ -35,10 +35,20 @@ public final class ComponentManager {
 
         switch (entityType) {
             case CIRCLE:
-                componentMap.put(ComponentEnum.POSITION, new PositionComponent());
-                componentMap.put(ComponentEnum.COLOR, new ColorComponent());
+
+                PositionComponent positionComponent = new PositionComponent();
+                SizeComponent sizeComponent = new SizeComponent(entityType);
+
+                componentMap.put(ComponentEnum.POSITION, positionComponent);
                 componentMap.put(ComponentEnum.DIRECTION, new DirectionComponent());
+                componentMap.put(ComponentEnum.SIZE, sizeComponent);
+                componentMap.put(ComponentEnum.TEXTURE, new TextureComponent());
                 componentMap.put(ComponentEnum.SPEED, new SpeedComponent());
+
+                componentMap.put(ComponentEnum.BOUNDING_BOX,
+                        new BoundingBoxComponent((int) positionComponent.getX(), (int) positionComponent.getY(),
+                                sizeComponent.getWidth(), sizeComponent.getHeight()));
+
                 entityComponentMap.put(entityId, componentMap);
                 break;
         }
