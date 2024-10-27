@@ -11,11 +11,9 @@ import com.raylib.Raylib.Texture;
 
 import Components.BoundingBoxComponent;
 import Components.ComponentManager;
-import Components.PositionComponent;
 import Enums.ComponentEnum;
 import Enums.EntityType;
 import Globals.Global;
-import Utils.ComponentUtil;
 
 public final class DrawSystem {
     private static final Texture circleTexture = LoadTexture(Global.CIRCLE_TEXTURE_PATH);
