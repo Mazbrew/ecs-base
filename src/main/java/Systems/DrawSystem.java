@@ -25,9 +25,6 @@ public final class DrawSystem {
     public static void draw(String entityId, EntityType entityType){
         PositionComponent positionComponent = ComponentUtil.getPositionComponentWithId(entityId);
 
-        int x = (int)positionComponent.getX();
-        int y = (int)positionComponent.getY();
-
         switch(entityType){
             case CIRCLE:
                 BoundingBoxComponent boundingBoxComponent = ComponentManager.getComponentFromEntityAndCast(entityId, ComponentEnum.BOUNDING_BOX,
