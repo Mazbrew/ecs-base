@@ -3,9 +3,12 @@ import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
 
 import java.util.List;
+import java.util.Random;
 
 import Components.ComponentManager;
+import Components.PositionComponent;
 import Entities.EntityManager;
+import Enums.ComponentEnum;
 import Enums.EntityType;
 import Globals.Global;
 import Systems.SystemManager;
@@ -18,7 +21,7 @@ public class Main {
     }
 
     private static void InitWindowProperties() {
-        InitWindow(0,0, Global.TITLE);
+        InitWindow(0, 0, Global.TITLE);
 
         int display = GetCurrentMonitor();
 
@@ -43,6 +46,19 @@ public class Main {
 
             if (IsKeyDown(KEY_DOWN)) {
                 EntityManager.removeEntityWithCount(EntityType.CIRCLE, 1000);
+            }
+
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+                List<String> entityIds = EntityManager.createEntitiesWithCount(EntityType.CIRCLE, 5);
+                ComponentManager.attachComponents(entityIds);
+
+                Random rand = new Random();
+
+                for (String entityId : entityIds) {
+                   PositionComponent positionComponent = ComponentManager.getComponentFromEntityAndCast(entityId, ComponentEnum.POSITION, PositionComponent.class);
+                   positionComponent.setX(GetMouseX() + rand.nextInt(-5, 5));
+                   positionComponent.setY(GetMouseY() + rand.nextInt(-5, 5));
+                }
             }
 
             BeginDrawing();
