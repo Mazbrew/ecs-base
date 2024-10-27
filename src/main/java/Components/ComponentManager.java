@@ -1,6 +1,7 @@
 package Components;
 
 import java.util.HashMap;
+import java.util.List;
 
 import Entities.EntityManager;
 import Enums.ComponentEnum;
@@ -10,7 +11,7 @@ import Utils.IdUtil;
 public final class ComponentManager {
     private static final HashMap<String, HashMap<ComponentEnum, IComponent>> entityComponentMap = new HashMap<>();
 
-    public static void attachComponents() {
+    public static void attachAllComponents() {
         if (!EntityManager.getEntityIdList().isEmpty()) {
             for (String entityId : EntityManager.getEntityIdList()) {
                 if (!entityComponentMap.containsKey(entityId)) {
@@ -20,13 +21,23 @@ public final class ComponentManager {
         }
     }
 
+    public static void attachComponents(List<String> entityIds) {
+        for (String entityId : entityIds) {
+            createComponents(entityId);
+        }
+    }
+
+    public static void attachComponent(String entityId) {
+        createComponents(entityId);
+    }
+
     public static void createComponents(String entityId) {
         EntityType entityType = IdUtil.idStringToEntityType(entityId);
         HashMap<ComponentEnum, IComponent> componentMap = new HashMap<>();
 
-        switch(entityType){
+        switch (entityType) {
             case CIRCLE:
-                componentMap.put(ComponentEnum.POSITION ,new PositionComponent());
+                componentMap.put(ComponentEnum.POSITION, new PositionComponent());
                 componentMap.put(ComponentEnum.COLOR, new ColorComponent());
                 componentMap.put(ComponentEnum.DIRECTION, new DirectionComponent());
                 componentMap.put(ComponentEnum.SPEED, new SpeedComponent());

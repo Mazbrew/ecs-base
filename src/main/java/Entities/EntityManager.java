@@ -11,28 +11,49 @@ public final class EntityManager {
 
     private static final IEntity circleEntity = new CircleEntity();
 
-    public static void createEntityWithCount(EntityType entity, int count) {
+    public static List<String> createEntitiesWithCount(EntityType entity, int count) {
+        List<String> entityIds = new ArrayList<>();
+
         for (int i = 0; i < count; i++) {
-            addEntityToList(entity);
+            String entityId = addEntityToList(entity);
+
+            if(entityId != null){
+                entityIds.add(entityId);
+            }
         }
+
+        return entityIds;
     }
 
-    public static void createEntity(EntityType entity) {
-        addEntityToList(entity);
+    public static String createEntity(EntityType entity) {
+        return addEntityToList(entity);
     }
 
-    public static void createEntities(List<EntityType> entities) {
+    public static List<String> createEntities(List<EntityType> entities) {
+        List<String> entityIds = new ArrayList<>();
+
         for (EntityType entity : entities) {
-            addEntityToList(entity);
+            String entityId = addEntityToList(entity);
+
+            if(entityId != null){
+                entityIds.add(entityId);
+            }
         }
+
+        return entityIds;
     }
 
-    private static void addEntityToList(EntityType entity) {
+    private static String addEntityToList(EntityType entity) {
+        String entityId = null;
+
         switch (entity) {
             case CIRCLE:
-                entityIdList.add(circleEntity.getId());
+                entityId = circleEntity.getId();
+                entityIdList.add(entityId);
                 break;
         }
+
+        return entityId;
     }
 
     public static void removeEntity(EntityType entityType) {

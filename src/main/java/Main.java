@@ -2,6 +2,8 @@ import static com.raylib.Jaylib.BLACK;
 import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
 
+import java.util.List;
+
 import Components.ComponentManager;
 import Entities.EntityManager;
 import Enums.EntityType;
@@ -35,8 +37,8 @@ public class Main {
 
         while (!WindowShouldClose()) {
             if (IsKeyDown(KEY_UP)) {
-                EntityManager.createEntityWithCount(EntityType.CIRCLE, 1000);
-                ComponentManager.attachComponents();
+                List<String> entityIds = EntityManager.createEntitiesWithCount(EntityType.CIRCLE, 1000);
+                ComponentManager.attachComponents(entityIds);
             }
 
             if (IsKeyDown(KEY_DOWN)) {
