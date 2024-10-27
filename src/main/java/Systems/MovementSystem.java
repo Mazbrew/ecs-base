@@ -25,8 +25,8 @@ public class MovementSystem {
             float deltaX = (float) Math.cos(m);
             float deltaY = (float) Math.sin(m);
 
-            float x = positionComponent.getX() + deltaX * speedComponent.getSpeed();
-            float y = positionComponent.getY() + deltaY * speedComponent.getSpeed();
+            float x = positionComponent.getX() + (deltaX * speedComponent.getSpeed());
+            float y = positionComponent.getY() + (deltaY * speedComponent.getSpeed());
 
             if (x < 0) {
                 positionComponent.setX(0);
@@ -43,7 +43,7 @@ public class MovementSystem {
                 directionComponent.setDirection(-m);
             }
 
-            if (y> Global.SCREEN_HEIGHT) {
+            if (y > Global.SCREEN_HEIGHT) {
                 positionComponent.setX(Global.SCREEN_HEIGHT);
                 directionComponent.setDirection(-m);
             }
@@ -52,7 +52,7 @@ public class MovementSystem {
                 case CIRCLE:
                     positionComponent.setX(x);
                     positionComponent.setY(y);
-                    
+
                     Rectangle boundingBox = boundingBoxComponent.getBoundingBox();
                     boundingBox.x(x);
                     boundingBox.y(y);

@@ -18,7 +18,7 @@ import Globals.Global;
 public final class DrawSystem {
     private static final Texture circleTexture = LoadTexture(Global.CIRCLE_TEXTURE_PATH);
     private static final Rectangle circleSourceRectangle = new Rectangle(0,0, circleTexture.width(), circleTexture.height());
-    private static final Vector2 circleOrigin = new Vector2(Global.CIRCLE_SIZE/2, Global.CIRCLE_SIZE);
+    private static final Vector2 circleOrigin = new Vector2(Global.CIRCLE_SIZE/2, Global.CIRCLE_SIZE/2);
 
     public static void draw(String entityId, EntityType entityType){
         switch(entityType){

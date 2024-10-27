@@ -52,12 +52,10 @@ public class Main {
                 List<String> entityIds = EntityManager.createEntitiesWithCount(EntityType.CIRCLE, 5);
                 ComponentManager.attachComponents(entityIds);
 
-                Random rand = new Random();
-
                 for (String entityId : entityIds) {
                    PositionComponent positionComponent = ComponentManager.getComponentFromEntityAndCast(entityId, ComponentEnum.POSITION, PositionComponent.class);
-                   positionComponent.setX(GetMouseX() + rand.nextInt(-5, 5));
-                   positionComponent.setY(GetMouseY() + rand.nextInt(-5, 5));
+                   positionComponent.setX(GetMouseX());
+                   positionComponent.setY(GetMouseY());
                 }
             }
 
